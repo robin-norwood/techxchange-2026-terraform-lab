@@ -61,3 +61,8 @@ Thumbs.db
 *.bak
 
 *.zip
+
+phase-02-single-workspace/terramino-app/*
+phase-03-modules/terramino-app/*
+phase-04-workspace-per-region/terramino-environment/terramino-app/*
+phase-05-terraform-stacks/terramino-environment/terramino-app/*
