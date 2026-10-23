@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terramino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Terramino</h1>
+            <div class="region-info">
+                <label for="region-select">Environment:</label>
+                <select id="region-select">
+                    <option>Loading...</option>
+                </select>
+                <button id="refresh-discovery" class="btn btn-icon" title="Refresh instances">⟳</button>
+                <span id="connection-status" class="status-loading">⟳ Loading...</span>
+            </div>
+        </header>
+
+        <div class="game-container">
+            <!-- Game Board -->
+            <div class="game-section">
+                <!-- Game Info Bar (above canvas) -->
+                <div class="game-info-bar">
+                    <div class="player-info-compact">
+                        <label for="player-name">Player</label>
+                        <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+                        <small><span id="player-id">Not set</span></small>
+                    </div>
+                    
+                    <div class="game-stats">
+                        <div class="stat-compact">
+                            <span class="stat-label">Score:</span>
+                            <span id="score" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-compact">
+                            <span class="stat-label">Lines:</span>
+                            <span id="lines" class="stat-value">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="next-piece-compact">
+                        <span class="next-label">Next</span>
+                        <canvas id="next-canvas" width="80" height="80"></canvas>
+                    </div>
+                </div>
+
+                <canvas id="game-canvas" width="360" height="720"></canvas>
+                
+                <div class="game-controls">
+                    <button id="start-btn" class="btn btn-primary">Start Game</button>
+                    <button id="pause-btn" class="btn btn-secondary" disabled>Pause</button>
+                    <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                </div>
+                <div class="instructions">
+                    <h3>Controls</h3>
+                    <p>← → : Move</p>
+                    <p>↑ : Rotate</p>
+                    <p>↓ : Soft Drop</p>
+                    <p>Space : Hard Drop</p>
+                </div>
+            </div>
+
+            <!-- High Scores -->
+            <div class="highscore-section">
+                <div class="highscore-header">
+                    <h2>High Scores</h2>
+                    <button id="refresh-scores" class="btn btn-small">Refresh</button>
+                </div>
+                <div id="highscores-list" class="highscores-list">
+                    <p class="loading">Loading high scores...</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>IBM TechXchange 2026 - Session 3494</p>
+            <p>Manage Multi-region Deployments with HCP Terraform</p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

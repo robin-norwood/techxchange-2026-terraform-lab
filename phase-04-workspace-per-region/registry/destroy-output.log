@@ -1,0 +1,627 @@
+[0m[33mRunning apply in HCP Terraform. Output will stream here. Pressing Ctrl-C
+will cancel the remote apply if it's still pending. If the apply started it
+will stop streaming the logs, but will not stop the apply running remotely.[0m
+
+Preparing the remote apply...
+[0m
+[0m[33mTo view this run in a browser, visit:[0m
+[0m[33mhttps://app.terraform.io/app/hashicorp-training/phase-03-registry/runs/run-t5iVW6kERKKLAdXj[0m
+[0m
+Waiting for the plan to start...
+
+Terraform v1.16.6
+on linux_amd64
+Initializing plugins and modules...
+[1mmodule.environment_registry.random_id.lambda_bucket_suffix: Refreshing state... [id=5PvUDg][0m[0m
+[1mmodule.environment_registry.random_string.registry_suffix: Refreshing state... [id=u71o][0m[0m
+[1mmodule.environment_registry.data.aws_region.registry: Refreshing...[0m[0m
+[1mmodule.environment_registry.aws_s3_bucket.lambda_packages: Refreshing state... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_dynamodb_table.environment_registry: Refreshing state... [id=terramino-environment-registry-u71o][0m[0m
+[1mmodule.environment_registry.data.aws_region.registry: Refresh complete after 0s [id=us-east-1][0m[0m
+[1mmodule.environment_registry.aws_iam_role.discovery: Refreshing state... [id=terramino-useast1-discovery-role][0m[0m
+[1mmodule.environment_registry.aws_iam_role.register_environment: Refreshing state... [id=terramino-useast1-register-environment-role][0m[0m
+[1mmodule.environment_registry.aws_iam_policy.registry_read: Refreshing state... [id=arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o][0m[0m
+[1mmodule.environment_registry.aws_iam_policy.registry_write: Refreshing state... [id=arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.discovery_basic: Refreshing state... [id=terramino-useast1-discovery-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.register_environment_basic: Refreshing state... [id=terramino-useast1-register-environment-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.register_environment_registry: Refreshing state... [id=terramino-useast1-register-environment-role/arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.discovery_registry: Refreshing state... [id=terramino-useast1-discovery-role/arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o][0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_server_side_encryption_configuration.lambda_packages: Refreshing state... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_public_access_block.lambda_packages: Refreshing state... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_s3_object.register_environment: Refreshing state... [id=terramino-registry-lambda-e4fbd40e/register-environment.zip][0m[0m
+[1mmodule.environment_registry.aws_s3_object.discovery: Refreshing state... [id=terramino-registry-lambda-e4fbd40e/discovery.zip][0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_versioning.lambda_packages: Refreshing state... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_lambda_function.register_environment: Refreshing state... [id=terramino-useast1-register-environment][0m[0m
+[1mmodule.environment_registry.aws_lambda_function.discovery: Refreshing state... [id=terramino-useast1-discovery][0m[0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.environment_registry.aws_dynamodb_table.environment_registry[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_dynamodb_table" "environment_registry" {
+      [31m-[0m[0m arn                         = "arn:aws:dynamodb:us-east-1:949008909725:table/terramino-environment-registry-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m billing_mode                = "PAY_PER_REQUEST" [90m-> null[0m[0m
+      [31m-[0m[0m deletion_protection_enabled = false [90m-> null[0m[0m
+      [31m-[0m[0m hash_key                    = "region_id" [90m-> null[0m[0m
+      [31m-[0m[0m id                          = "terramino-environment-registry-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m name                        = "terramino-environment-registry-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m read_capacity               = 0 [90m-> null[0m[0m
+      [31m-[0m[0m region                      = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m stream_enabled              = false [90m-> null[0m[0m
+      [31m-[0m[0m table_class                 = "STANDARD" [90m-> null[0m[0m
+      [31m-[0m[0m tags                        = {
+          [31m-[0m[0m "Name" = "terramino-environment-registry-u71o"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                    = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-environment-registry-u71o"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m write_capacity              = 0 [90m-> null[0m[0m
+        [90m# (3 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m attribute {
+          [31m-[0m[0m name = "region_id" [90m-> null[0m[0m
+          [31m-[0m[0m type = "S" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m point_in_time_recovery {
+          [31m-[0m[0m enabled                 = false [90m-> null[0m[0m
+          [31m-[0m[0m recovery_period_in_days = 0 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m ttl {
+          [31m-[0m[0m attribute_name = "ttl" [90m-> null[0m[0m
+          [31m-[0m[0m enabled        = true [90m-> null[0m[0m
+        }
+    }
+
+[1m  # module.environment_registry.aws_iam_policy.registry_read[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_policy" "registry_read" {
+      [31m-[0m[0m arn              = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m attachment_count = 1 [90m-> null[0m[0m
+      [31m-[0m[0m description      = "Allow reading from environment registry" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m name             = "terramino-useast1-registry-read-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m path             = "/" [90m-> null[0m[0m
+      [31m-[0m[0m policy           = jsonencode(
+            {
+              [31m-[0m[0m Statement = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m Action   = [
+                          [31m-[0m[0m "dynamodb:GetItem",
+                          [31m-[0m[0m "dynamodb:Scan",
+                          [31m-[0m[0m "dynamodb:Query",
+                        ]
+                      [31m-[0m[0m Effect   = "Allow"
+                      [31m-[0m[0m Resource = "arn:aws:dynamodb:us-east-1:949008909725:table/terramino-environment-registry-u71o"
+                    },
+                ]
+              [31m-[0m[0m Version   = "2012-10-17"
+            }
+        ) [90m-> null[0m[0m
+      [31m-[0m[0m policy_id        = "ANPA5Z5KWYWO2T7JHRCR7" [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {} [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_policy.registry_write[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_policy" "registry_write" {
+      [31m-[0m[0m arn              = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m attachment_count = 1 [90m-> null[0m[0m
+      [31m-[0m[0m description      = "Allow writing to environment registry" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m name             = "terramino-useast1-registry-write-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m path             = "/" [90m-> null[0m[0m
+      [31m-[0m[0m policy           = jsonencode(
+            {
+              [31m-[0m[0m Statement = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m Action   = [
+                          [31m-[0m[0m "dynamodb:PutItem",
+                          [31m-[0m[0m "dynamodb:UpdateItem",
+                        ]
+                      [31m-[0m[0m Effect   = "Allow"
+                      [31m-[0m[0m Resource = "arn:aws:dynamodb:*:*:table/terramino-environment-registry-u71o"
+                    },
+                ]
+              [31m-[0m[0m Version   = "2012-10-17"
+            }
+        ) [90m-> null[0m[0m
+      [31m-[0m[0m policy_id        = "ANPA5Z5KWYWOYSPXDPUNQ" [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {} [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_role.discovery[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role" "discovery" {
+      [31m-[0m[0m arn                   = "arn:aws:iam::949008909725:role/terramino-useast1-discovery-role" [90m-> null[0m[0m
+      [31m-[0m[0m assume_role_policy    = jsonencode(
+            {
+              [31m-[0m[0m Statement = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m Action    = "sts:AssumeRole"
+                      [31m-[0m[0m Effect    = "Allow"
+                      [31m-[0m[0m Principal = {
+                          [31m-[0m[0m Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              [31m-[0m[0m Version   = "2012-10-17"
+            }
+        ) [90m-> null[0m[0m
+      [31m-[0m[0m create_date           = "2026-10-20T00:02:45Z" [90m-> null[0m[0m
+      [31m-[0m[0m force_detach_policies = false [90m-> null[0m[0m
+      [31m-[0m[0m id                    = "terramino-useast1-discovery-role" [90m-> null[0m[0m
+      [31m-[0m[0m managed_policy_arns   = [
+          [31m-[0m[0m "arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o",
+          [31m-[0m[0m "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m max_session_duration  = 3600 [90m-> null[0m[0m
+      [31m-[0m[0m name                  = "terramino-useast1-discovery-role" [90m-> null[0m[0m
+      [31m-[0m[0m path                  = "/" [90m-> null[0m[0m
+      [31m-[0m[0m tags                  = {
+          [31m-[0m[0m "Name" = "terramino-discovery-role"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all              = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-discovery-role"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m unique_id             = "AROA5Z5KWYWOXWRIHE3W3" [90m-> null[0m[0m
+        [90m# (3 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_role.register_environment[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role" "register_environment" {
+      [31m-[0m[0m arn                   = "arn:aws:iam::949008909725:role/terramino-useast1-register-environment-role" [90m-> null[0m[0m
+      [31m-[0m[0m assume_role_policy    = jsonencode(
+            {
+              [31m-[0m[0m Statement = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m Action    = "sts:AssumeRole"
+                      [31m-[0m[0m Effect    = "Allow"
+                      [31m-[0m[0m Principal = {
+                          [31m-[0m[0m Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              [31m-[0m[0m Version   = "2012-10-17"
+            }
+        ) [90m-> null[0m[0m
+      [31m-[0m[0m create_date           = "2026-10-20T00:02:45Z" [90m-> null[0m[0m
+      [31m-[0m[0m force_detach_policies = false [90m-> null[0m[0m
+      [31m-[0m[0m id                    = "terramino-useast1-register-environment-role" [90m-> null[0m[0m
+      [31m-[0m[0m managed_policy_arns   = [
+          [31m-[0m[0m "arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o",
+          [31m-[0m[0m "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m max_session_duration  = 3600 [90m-> null[0m[0m
+      [31m-[0m[0m name                  = "terramino-useast1-register-environment-role" [90m-> null[0m[0m
+      [31m-[0m[0m path                  = "/" [90m-> null[0m[0m
+      [31m-[0m[0m tags                  = {
+          [31m-[0m[0m "Name" = "terramino-register-environment-role"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all              = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-register-environment-role"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m unique_id             = "AROA5Z5KWYWOTS7EVLC4Y" [90m-> null[0m[0m
+        [90m# (3 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_role_policy_attachment.discovery_basic[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role_policy_attachment" "discovery_basic" {
+      [31m-[0m[0m id         = "terramino-useast1-discovery-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" [90m-> null[0m[0m
+      [31m-[0m[0m policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" [90m-> null[0m[0m
+      [31m-[0m[0m role       = "terramino-useast1-discovery-role" [90m-> null[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_role_policy_attachment.discovery_registry[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role_policy_attachment" "discovery_registry" {
+      [31m-[0m[0m id         = "terramino-useast1-discovery-role/arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m policy_arn = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m role       = "terramino-useast1-discovery-role" [90m-> null[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_role_policy_attachment.register_environment_basic[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role_policy_attachment" "register_environment_basic" {
+      [31m-[0m[0m id         = "terramino-useast1-register-environment-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" [90m-> null[0m[0m
+      [31m-[0m[0m policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" [90m-> null[0m[0m
+      [31m-[0m[0m role       = "terramino-useast1-register-environment-role" [90m-> null[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_iam_role_policy_attachment.register_environment_registry[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role_policy_attachment" "register_environment_registry" {
+      [31m-[0m[0m id         = "terramino-useast1-register-environment-role/arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m policy_arn = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o" [90m-> null[0m[0m
+      [31m-[0m[0m role       = "terramino-useast1-register-environment-role" [90m-> null[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_lambda_function.discovery[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_lambda_function" "discovery" {
+      [31m-[0m[0m architectures                  = [
+          [31m-[0m[0m "x86_64",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m arn                            = "arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-discovery" [90m-> null[0m[0m
+      [31m-[0m[0m code_sha256                    = "9UTAOo5vgTBAeIeBDB4uwc4fr3zrjooUt9v6DytDGVs=" [90m-> null[0m[0m
+      [31m-[0m[0m function_name                  = "terramino-useast1-discovery" [90m-> null[0m[0m
+      [31m-[0m[0m handler                        = "index.handler" [90m-> null[0m[0m
+      [31m-[0m[0m id                             = "terramino-useast1-discovery" [90m-> null[0m[0m
+      [31m-[0m[0m invoke_arn                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-discovery/invocations" [90m-> null[0m[0m
+      [31m-[0m[0m last_modified                  = "2026-10-20T00:02:55.756+0000" [90m-> null[0m[0m
+      [31m-[0m[0m layers                         = [] [90m-> null[0m[0m
+      [31m-[0m[0m memory_size                    = 128 [90m-> null[0m[0m
+      [31m-[0m[0m package_type                   = "Zip" [90m-> null[0m[0m
+      [31m-[0m[0m publish                        = false [90m-> null[0m[0m
+      [31m-[0m[0m qualified_arn                  = "arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-discovery:$LATEST" [90m-> null[0m[0m
+      [31m-[0m[0m qualified_invoke_arn           = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-discovery:$LATEST/invocations" [90m-> null[0m[0m
+      [31m-[0m[0m region                         = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m reserved_concurrent_executions = -1 [90m-> null[0m[0m
+      [31m-[0m[0m response_streaming_invoke_arn  = "arn:aws:apigateway:us-east-1:lambda:path/2021-11-15/functions/arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-discovery/response-streaming-invocations" [90m-> null[0m[0m
+      [31m-[0m[0m role                           = "arn:aws:iam::949008909725:role/terramino-useast1-discovery-role" [90m-> null[0m[0m
+      [31m-[0m[0m runtime                        = "nodejs18.x" [90m-> null[0m[0m
+      [31m-[0m[0m s3_bucket                      = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m s3_key                         = "discovery.zip" [90m-> null[0m[0m
+      [31m-[0m[0m skip_destroy                   = false [90m-> null[0m[0m
+      [31m-[0m[0m source_code_hash               = "a7d946a2c5c3a547a1e901e22e956765" [90m-> null[0m[0m
+      [31m-[0m[0m source_code_size               = 1283 [90m-> null[0m[0m
+      [31m-[0m[0m tags                           = {
+          [31m-[0m[0m "Name" = "terramino-discovery"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                       = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-discovery"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m timeout                        = 30 [90m-> null[0m[0m
+      [31m-[0m[0m version                        = "$LATEST" [90m-> null[0m[0m
+        [90m# (8 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m environment {
+          [31m-[0m[0m variables = {
+              [31m-[0m[0m "REGISTRY_REGION" = "us-east-1"
+              [31m-[0m[0m "REGISTRY_TABLE"  = "terramino-environment-registry-u71o"
+            } [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m ephemeral_storage {
+          [31m-[0m[0m size = 512 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m logging_config {
+          [31m-[0m[0m log_format            = "Text" [90m-> null[0m[0m
+          [31m-[0m[0m log_group             = "/aws/lambda/terramino-useast1-discovery" [90m-> null[0m[0m
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+
+      [31m-[0m[0m tracing_config {
+          [31m-[0m[0m mode = "PassThrough" [90m-> null[0m[0m
+        }
+    }
+
+[1m  # module.environment_registry.aws_lambda_function.register_environment[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_lambda_function" "register_environment" {
+      [31m-[0m[0m architectures                  = [
+          [31m-[0m[0m "x86_64",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m arn                            = "arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-register-environment" [90m-> null[0m[0m
+      [31m-[0m[0m code_sha256                    = "aEr3yucsljjxfnsfT0Kj7YKWwrC0cYi07OcxbABLwR4=" [90m-> null[0m[0m
+      [31m-[0m[0m function_name                  = "terramino-useast1-register-environment" [90m-> null[0m[0m
+      [31m-[0m[0m handler                        = "index.handler" [90m-> null[0m[0m
+      [31m-[0m[0m id                             = "terramino-useast1-register-environment" [90m-> null[0m[0m
+      [31m-[0m[0m invoke_arn                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-register-environment/invocations" [90m-> null[0m[0m
+      [31m-[0m[0m last_modified                  = "2026-10-20T00:02:55.829+0000" [90m-> null[0m[0m
+      [31m-[0m[0m layers                         = [] [90m-> null[0m[0m
+      [31m-[0m[0m memory_size                    = 128 [90m-> null[0m[0m
+      [31m-[0m[0m package_type                   = "Zip" [90m-> null[0m[0m
+      [31m-[0m[0m publish                        = false [90m-> null[0m[0m
+      [31m-[0m[0m qualified_arn                  = "arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-register-environment:$LATEST" [90m-> null[0m[0m
+      [31m-[0m[0m qualified_invoke_arn           = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-register-environment:$LATEST/invocations" [90m-> null[0m[0m
+      [31m-[0m[0m region                         = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m reserved_concurrent_executions = -1 [90m-> null[0m[0m
+      [31m-[0m[0m response_streaming_invoke_arn  = "arn:aws:apigateway:us-east-1:lambda:path/2021-11-15/functions/arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-register-environment/response-streaming-invocations" [90m-> null[0m[0m
+      [31m-[0m[0m role                           = "arn:aws:iam::949008909725:role/terramino-useast1-register-environment-role" [90m-> null[0m[0m
+      [31m-[0m[0m runtime                        = "nodejs18.x" [90m-> null[0m[0m
+      [31m-[0m[0m s3_bucket                      = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m s3_key                         = "register-environment.zip" [90m-> null[0m[0m
+      [31m-[0m[0m skip_destroy                   = false [90m-> null[0m[0m
+      [31m-[0m[0m source_code_hash               = "0700a99aed44e9196b26d596357c0143" [90m-> null[0m[0m
+      [31m-[0m[0m source_code_size               = 976 [90m-> null[0m[0m
+      [31m-[0m[0m tags                           = {
+          [31m-[0m[0m "Name" = "terramino-register-environment"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                       = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-register-environment"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m timeout                        = 30 [90m-> null[0m[0m
+      [31m-[0m[0m version                        = "$LATEST" [90m-> null[0m[0m
+        [90m# (8 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m environment {
+          [31m-[0m[0m variables = {
+              [31m-[0m[0m "REGISTRY_REGION" = "us-east-1"
+              [31m-[0m[0m "REGISTRY_TABLE"  = "terramino-environment-registry-u71o"
+            } [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m ephemeral_storage {
+          [31m-[0m[0m size = 512 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m logging_config {
+          [31m-[0m[0m log_format            = "Text" [90m-> null[0m[0m
+          [31m-[0m[0m log_group             = "/aws/lambda/terramino-useast1-register-environment" [90m-> null[0m[0m
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+
+      [31m-[0m[0m tracing_config {
+          [31m-[0m[0m mode = "PassThrough" [90m-> null[0m[0m
+        }
+    }
+
+[1m  # module.environment_registry.aws_s3_bucket.lambda_packages[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_s3_bucket" "lambda_packages" {
+      [31m-[0m[0m arn                         = "arn:aws:s3:::terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m bucket                      = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m bucket_domain_name          = "terramino-registry-lambda-e4fbd40e.s3.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m bucket_namespace            = "global" [90m-> null[0m[0m
+      [31m-[0m[0m bucket_region               = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m bucket_regional_domain_name = "terramino-registry-lambda-e4fbd40e.s3.us-east-1.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m force_destroy               = false [90m-> null[0m[0m
+      [31m-[0m[0m hosted_zone_id              = "Z3AQBSTGFYJSTF" [90m-> null[0m[0m
+      [31m-[0m[0m id                          = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m object_lock_enabled         = false [90m-> null[0m[0m
+      [31m-[0m[0m region                      = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m request_payer               = "BucketOwner" [90m-> null[0m[0m
+      [31m-[0m[0m tags                        = {
+          [31m-[0m[0m "Name" = "terramino-registry-lambda"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                    = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-registry-lambda"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+        [90m# (3 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m grant {
+          [31m-[0m[0m id          = "dd8644c4665a8c936d67170003d920e59d92bd649e9bbf90e98c09a657512929" [90m-> null[0m[0m
+          [31m-[0m[0m permissions = [
+              [31m-[0m[0m "FULL_CONTROL",
+            ] [90m-> null[0m[0m
+          [31m-[0m[0m type        = "CanonicalUser" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m server_side_encryption_configuration {
+          [31m-[0m[0m rule {
+              [31m-[0m[0m bucket_key_enabled = false [90m-> null[0m[0m
+
+              [31m-[0m[0m apply_server_side_encryption_by_default {
+                  [31m-[0m[0m sse_algorithm     = "AES256" [90m-> null[0m[0m
+                    [90m# (1 unchanged attribute hidden)[0m[0m
+                }
+            }
+        }
+
+      [31m-[0m[0m versioning {
+          [31m-[0m[0m enabled    = true [90m-> null[0m[0m
+          [31m-[0m[0m mfa_delete = false [90m-> null[0m[0m
+        }
+    }
+
+[1m  # module.environment_registry.aws_s3_bucket_public_access_block.lambda_packages[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_s3_bucket_public_access_block" "lambda_packages" {
+      [31m-[0m[0m block_public_acls       = true [90m-> null[0m[0m
+      [31m-[0m[0m block_public_policy     = true [90m-> null[0m[0m
+      [31m-[0m[0m bucket                  = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m id                      = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m ignore_public_acls      = true [90m-> null[0m[0m
+      [31m-[0m[0m region                  = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m restrict_public_buckets = true [90m-> null[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_s3_bucket_server_side_encryption_configuration.lambda_packages[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_s3_bucket_server_side_encryption_configuration" "lambda_packages" {
+      [31m-[0m[0m bucket                = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m id                    = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m region                = "us-east-1" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+
+      [31m-[0m[0m rule {
+          [31m-[0m[0m blocked_encryption_types = [
+              [31m-[0m[0m "SSE-C",
+            ] [90m-> null[0m[0m
+          [31m-[0m[0m bucket_key_enabled       = false [90m-> null[0m[0m
+
+          [31m-[0m[0m apply_server_side_encryption_by_default {
+              [31m-[0m[0m sse_algorithm     = "AES256" [90m-> null[0m[0m
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            }
+        }
+    }
+
+[1m  # module.environment_registry.aws_s3_bucket_versioning.lambda_packages[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_s3_bucket_versioning" "lambda_packages" {
+      [31m-[0m[0m bucket                = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m id                    = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m region                = "us-east-1" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+
+      [31m-[0m[0m versioning_configuration {
+          [31m-[0m[0m mfa_delete = "Disabled" [90m-> null[0m[0m
+          [31m-[0m[0m status     = "Enabled" [90m-> null[0m[0m
+        }
+    }
+
+[1m  # module.environment_registry.aws_s3_object.discovery[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_s3_object" "discovery" {
+      [31m-[0m[0m arn                           = "arn:aws:s3:::terramino-registry-lambda-e4fbd40e/discovery.zip" [90m-> null[0m[0m
+      [31m-[0m[0m bucket                        = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m bucket_key_enabled            = false [90m-> null[0m[0m
+      [31m-[0m[0m content_type                  = "application/octet-stream" [90m-> null[0m[0m
+      [31m-[0m[0m etag                          = "a7d946a2c5c3a547a1e901e22e956765" [90m-> null[0m[0m
+      [31m-[0m[0m force_destroy                 = false [90m-> null[0m[0m
+      [31m-[0m[0m id                            = "terramino-registry-lambda-e4fbd40e/discovery.zip" [90m-> null[0m[0m
+      [31m-[0m[0m key                           = "discovery.zip" [90m-> null[0m[0m
+      [31m-[0m[0m metadata                      = {} [90m-> null[0m[0m
+      [31m-[0m[0m region                        = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m server_side_encryption        = "AES256" [90m-> null[0m[0m
+      [31m-[0m[0m source                        = "./lambda-packages/discovery.zip" [90m-> null[0m[0m
+      [31m-[0m[0m storage_class                 = "STANDARD" [90m-> null[0m[0m
+      [31m-[0m[0m tags                          = {
+          [31m-[0m[0m "Name" = "terramino-discovery"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                      = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-discovery"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m version_id                    = "null" [90m-> null[0m[0m
+        [90m# (13 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.environment_registry.aws_s3_object.register_environment[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_s3_object" "register_environment" {
+      [31m-[0m[0m arn                           = "arn:aws:s3:::terramino-registry-lambda-e4fbd40e/register-environment.zip" [90m-> null[0m[0m
+      [31m-[0m[0m bucket                        = "terramino-registry-lambda-e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m bucket_key_enabled            = false [90m-> null[0m[0m
+      [31m-[0m[0m content_type                  = "application/octet-stream" [90m-> null[0m[0m
+      [31m-[0m[0m etag                          = "0700a99aed44e9196b26d596357c0143" [90m-> null[0m[0m
+      [31m-[0m[0m force_destroy                 = false [90m-> null[0m[0m
+      [31m-[0m[0m id                            = "terramino-registry-lambda-e4fbd40e/register-environment.zip" [90m-> null[0m[0m
+      [31m-[0m[0m key                           = "register-environment.zip" [90m-> null[0m[0m
+      [31m-[0m[0m metadata                      = {} [90m-> null[0m[0m
+      [31m-[0m[0m region                        = "us-east-1" [90m-> null[0m[0m
+      [31m-[0m[0m server_side_encryption        = "AES256" [90m-> null[0m[0m
+      [31m-[0m[0m source                        = "./lambda-packages/register-environment.zip" [90m-> null[0m[0m
+      [31m-[0m[0m storage_class                 = "STANDARD" [90m-> null[0m[0m
+      [31m-[0m[0m tags                          = {
+          [31m-[0m[0m "Name" = "terramino-register-environment"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                      = {
+          [31m-[0m[0m "Component" = "registry"
+          [31m-[0m[0m "ManagedBy" = "Terraform"
+          [31m-[0m[0m "Name"      = "terramino-register-environment"
+          [31m-[0m[0m "Project"   = "terramino"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m version_id                    = "null" [90m-> null[0m[0m
+        [90m# (13 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.environment_registry.random_id.lambda_bucket_suffix[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "random_id" "lambda_bucket_suffix" {
+      [31m-[0m[0m b64_std     = "5PvUDg==" [90m-> null[0m[0m
+      [31m-[0m[0m b64_url     = "5PvUDg" [90m-> null[0m[0m
+      [31m-[0m[0m byte_length = 4 [90m-> null[0m[0m
+      [31m-[0m[0m dec         = "3841709070" [90m-> null[0m[0m
+      [31m-[0m[0m hex         = "e4fbd40e" [90m-> null[0m[0m
+      [31m-[0m[0m id          = "5PvUDg" [90m-> null[0m[0m
+    }
+
+[1m  # module.environment_registry.random_string.registry_suffix[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "random_string" "registry_suffix" {
+      [31m-[0m[0m id          = "u71o" [90m-> null[0m[0m
+      [31m-[0m[0m length      = 4 [90m-> null[0m[0m
+      [31m-[0m[0m lower       = true [90m-> null[0m[0m
+      [31m-[0m[0m min_lower   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m min_numeric = 0 [90m-> null[0m[0m
+      [31m-[0m[0m min_special = 0 [90m-> null[0m[0m
+      [31m-[0m[0m min_upper   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m number      = true [90m-> null[0m[0m
+      [31m-[0m[0m numeric     = true [90m-> null[0m[0m
+      [31m-[0m[0m result      = "u71o" [90m-> null[0m[0m
+      [31m-[0m[0m special     = false [90m-> null[0m[0m
+      [31m-[0m[0m upper       = false [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 19 to destroy.
+
+Changes to Outputs:
+  [31m-[0m[0m registry            = {
+      [31m-[0m[0m discovery_function_arn  = "arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-discovery"
+      [31m-[0m[0m discovery_function_name = "terramino-useast1-discovery"
+      [31m-[0m[0m read_policy_arn         = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o"
+      [31m-[0m[0m region                  = "us-east-1"
+      [31m-[0m[0m register_function_arn   = "arn:aws:lambda:us-east-1:949008909725:function:terramino-useast1-register-environment"
+      [31m-[0m[0m register_function_name  = "terramino-useast1-register-environment"
+      [31m-[0m[0m table_arn               = "arn:aws:dynamodb:us-east-1:949008909725:table/terramino-environment-registry-u71o"
+      [31m-[0m[0m table_name              = "terramino-environment-registry-u71o"
+      [31m-[0m[0m write_policy_arn        = "arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o"
+    } [90m-> null[0m[0m
+  [31m-[0m[0m registry_region     = "us-east-1" [90m-> null[0m[0m
+  [31m-[0m[0m registry_table_name = "terramino-environment-registry-u71o" [90m-> null[0m[0m
+
+------------------------------------------------------------------------
+
+[1mCost Estimation:
+[0m
+Resources: 0 of 0 estimated
+           $0.0/mo +$0.0
+
+------------------------------------------------------------------------
+
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.discovery_basic: Destroying... [id=terramino-useast1-discovery-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole][0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_public_access_block.lambda_packages: Destroying... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_server_side_encryption_configuration.lambda_packages: Destroying... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_lambda_function.discovery: Destroying... [id=terramino-useast1-discovery][0m[0m
+[1mmodule.environment_registry.aws_lambda_function.register_environment: Destroying... [id=terramino-useast1-register-environment][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.discovery_registry: Destroying... [id=terramino-useast1-discovery-role/arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o][0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_versioning.lambda_packages: Destroying... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.register_environment_registry: Destroying... [id=terramino-useast1-register-environment-role/arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.register_environment_basic: Destroying... [id=terramino-useast1-register-environment-role/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.discovery_registry: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.register_environment_registry: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_iam_policy.registry_write: Destroying... [id=arn:aws:iam::949008909725:policy/terramino-useast1-registry-write-u71o][0m[0m
+[1mmodule.environment_registry.aws_iam_policy.registry_read: Destroying... [id=arn:aws:iam::949008909725:policy/terramino-useast1-registry-read-u71o][0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.register_environment_basic: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_server_side_encryption_configuration.lambda_packages: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_iam_role_policy_attachment.discovery_basic: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_iam_policy.registry_write: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_iam_policy.registry_read: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_versioning.lambda_packages: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_s3_bucket_public_access_block.lambda_packages: Destruction complete after 1s[0m[0m
+[1mmodule.environment_registry.aws_lambda_function.register_environment: Destruction complete after 5s[0m[0m
+[1mmodule.environment_registry.aws_iam_role.register_environment: Destroying... [id=terramino-useast1-register-environment-role][0m[0m
+[1mmodule.environment_registry.aws_s3_object.register_environment: Destroying... [id=terramino-registry-lambda-e4fbd40e/register-environment.zip][0m[0m
+[1mmodule.environment_registry.aws_lambda_function.discovery: Destruction complete after 5s[0m[0m
+[1mmodule.environment_registry.aws_s3_object.discovery: Destroying... [id=terramino-registry-lambda-e4fbd40e/discovery.zip][0m[0m
+[1mmodule.environment_registry.aws_iam_role.discovery: Destroying... [id=terramino-useast1-discovery-role][0m[0m
+[1mmodule.environment_registry.aws_dynamodb_table.environment_registry: Destroying... [id=terramino-environment-registry-u71o][0m[0m
+[1mmodule.environment_registry.aws_s3_object.register_environment: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_s3_object.discovery: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_s3_bucket.lambda_packages: Destroying... [id=terramino-registry-lambda-e4fbd40e][0m[0m
+[1mmodule.environment_registry.aws_iam_role.discovery: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_iam_role.register_environment: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_s3_bucket.lambda_packages: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.random_id.lambda_bucket_suffix: Destroying... [id=5PvUDg][0m[0m
+[1mmodule.environment_registry.random_id.lambda_bucket_suffix: Destruction complete after 0s[0m[0m
+[1mmodule.environment_registry.aws_dynamodb_table.environment_registry: Destruction complete after 6s[0m[0m
+[1mmodule.environment_registry.random_string.registry_suffix: Destroying... [id=u71o][0m[0m
+[1mmodule.environment_registry.random_string.registry_suffix: Destruction complete after 0s[0m[0m
+
+[1m[32mApply complete! Resources: 0 added, 0 changed, 19 destroyed.[0m[0m
+
