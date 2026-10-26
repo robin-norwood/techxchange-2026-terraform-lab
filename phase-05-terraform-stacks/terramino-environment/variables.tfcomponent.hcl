@@ -1,5 +1,3 @@
-# Terramino Environment Stack Variables
-
 variable "identity_token" {
   description = "Identity token for authentication"
   type        = string

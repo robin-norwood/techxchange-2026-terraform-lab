@@ -1,5 +1,3 @@
-# Terramino Environment Stack Provider Configuration
-
 required_providers {
   aws = {
     source  = "hashicorp/aws"
@@ -11,7 +9,6 @@ required_providers {
   }
 }
 
-# Provider configuration - region will be set by each deployment
 provider "aws" "this" {
   config {
     region = var.aws_region

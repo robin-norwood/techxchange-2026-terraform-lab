@@ -1,8 +1,3 @@
-# Terramino Environment Stack Components Configuration
-# This stack manages regional Terramino deployments and consumes the registry stack outputs
-
-# Reusable Terramino Environment Component
-# This component can be deployed to any AWS region
 component "terramino_environment" {
   source = "./components/terramino-environment"
 

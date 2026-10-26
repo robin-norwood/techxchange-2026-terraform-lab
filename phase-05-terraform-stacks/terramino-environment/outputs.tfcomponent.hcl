@@ -1,6 +1,3 @@
-# Terramino Environment Stack Outputs
-# These outputs are available per deployment
-
 output "game_url" {
   type        = string
   description = "URL to access the Terramino game"
