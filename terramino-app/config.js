@@ -155,8 +155,11 @@ async function discoverEnvironments() {
         console.log('Discovering environments...');
         console.log('Discovery URL:', CONFIG.DISCOVERY_ENDPOINT);
         
-        // First, register this environment (non-blocking)
-        registerEnvironment().catch(err => console.warn('Registration failed:', err));
+        // First, register this environment (MUST complete before discovery)
+        await registerEnvironment();
+
+        // Small delay to ensure DynamoDB consistency
+        await new Promise(resolve => setTimeout(resolve, 500));
         
         const response = await fetch(CONFIG.DISCOVERY_ENDPOINT, {
             method: 'GET',
