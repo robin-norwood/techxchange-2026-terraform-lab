@@ -35,7 +35,7 @@ resource "random_string" "environment" {
 }
 
 locals {
-  environment_prefix = "${var.project_name}-${data.aws_region.environment.name}-${random_string.environment.result}"
+  environment_prefix = "${var.project_name}-${data.aws_region.environment.region}-${random_string.environment.result}"
 
   environment_lambda_functions = {
     game-logic = {
@@ -57,6 +57,6 @@ locals {
 
   common_environment_vars = {
     TABLE_NAME = aws_dynamodb_table.scores.name
-    REGION     = data.aws_region.environment.name
+    REGION     = data.aws_region.environment.region
   }
 }
