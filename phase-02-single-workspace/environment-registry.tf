@@ -5,7 +5,7 @@ resource "random_string" "registry" {
 }
 
 locals {
-  registry_prefix = "${var.project_name}-${var.registry_region}-${random_string.registry.result}"
+  registry_prefix = "${var.project_name}-${data.aws_region.registry.name}-${random_string.registry.result}"
 }
 
 resource "aws_dynamodb_table" "environment_registry" {
@@ -88,7 +88,7 @@ resource "aws_lambda_function" "discovery" {
   environment {
     variables = {
       REGISTRY_TABLE  = aws_dynamodb_table.environment_registry.name
-      REGISTRY_REGION = var.registry_region
+      REGISTRY_REGION = data.aws_region.registry.name
     }
   }
 }
@@ -157,7 +157,7 @@ resource "aws_lambda_function" "register_environment" {
   environment {
     variables = {
       REGISTRY_TABLE  = aws_dynamodb_table.environment_registry.name
-      REGISTRY_REGION = var.registry_region
+      REGISTRY_REGION = data.aws_region.registry.name
     }
   }
 

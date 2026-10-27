@@ -77,12 +77,12 @@ resource "aws_s3_object" "config_js" {
 
   content = templatefile("${path.module}/${local.frontend_source_dir}/config.js", {
     api_endpoint = aws_apigatewayv2_api.api.api_endpoint
-    region       = var.environment_region
+    region       = data.aws_region.environment.name
   })
 
   etag = md5(templatefile("${path.module}/${local.frontend_source_dir}/config.js", {
     api_endpoint = aws_apigatewayv2_api.api.api_endpoint
-    region       = var.environment_region
+    region       = data.aws_region.environment.name
   }))
 }
 

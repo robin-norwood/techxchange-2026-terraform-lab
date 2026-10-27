@@ -1,5 +1,5 @@
 provider "aws" {
-  region = var.registry_region
+  region = "us-east-1"
   alias  = "registry"
   default_tags {
     tags = {
@@ -10,7 +10,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  region = var.environment_region
+  region = "us-east-1"
   alias  = "environment"
   default_tags {
     tags = {
@@ -20,6 +20,14 @@ provider "aws" {
   }
 }
 
+data "aws_region" "registry" {
+  provider = aws.registry
+}
+
+data "aws_region" "environment" {
+  provider = aws.environment
+}
+
 resource "random_string" "environment" {
   length  = 4
   special = false
@@ -27,7 +35,7 @@ resource "random_string" "environment" {
 }
 
 locals {
-  environment_prefix = "${var.project_name}-${var.environment_region}-${random_string.environment.result}"
+  environment_prefix = "${var.project_name}-${data.aws_region.environment.name}-${random_string.environment.result}"
 
   environment_lambda_functions = {
     game-logic = {
@@ -49,6 +57,6 @@ locals {
 
   common_environment_vars = {
     TABLE_NAME = aws_dynamodb_table.scores.name
-    REGION     = var.environment_region
+    REGION     = data.aws_region.environment.name
   }
 }

@@ -4,18 +4,6 @@ variable "project_name" {
   default     = "terramino"
 }
 
-variable "registry_region" {
-  description = "Region for the environment deployment (e.g., 'us-east-1', 'eu-west-1', 'ap-south-1')"
-  type        = string
-  default     = "us-east-1"
-}
-
-variable "environment_region" {
-  description = "Region for the environment deployment (e.g., 'us-east-1', 'eu-west-1', 'ap-south-1')"
-  type        = string
-  default     = "us-east-1"
-}
-
 variable "enable_cloudfront" {
   description = "Enable CloudFront distribution (takes 5-10 minutes to deploy)"
   type        = bool

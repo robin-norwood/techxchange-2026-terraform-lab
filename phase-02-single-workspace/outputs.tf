@@ -6,7 +6,7 @@ output "game_url" {
 output "registry" {
   description = "Environment registry configuration"
   value = {
-    region                 = var.registry_region
+    region                 = data.aws_region.registry.name
     discovery_function_arn = aws_lambda_function.discovery.arn
     register_function_arn  = aws_lambda_function.register_environment.arn
   }
