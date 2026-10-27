@@ -13,7 +13,7 @@ deployment "us_east_1" {
     identity_token      = identity_token.aws.jwt
     aws_region          = "us-east-1"
     project_name        = "terramino"
-    registry            = upstream_input.registry_stack.registry_config
+    registry            = upstream_input.registry_stack.registry
     enable_cloudfront   = true
     lambda_runtime      = "nodejs22.x"
     lambda_source_dir   = "lambda-packages"
@@ -27,7 +27,7 @@ deployment "eu_west_1" {
     identity_token      = identity_token.aws.jwt
     aws_region          = "eu-west-1"
     project_name        = "terramino"
-    registry            = upstream_input.registry_stack.registry_config
+    registry            = upstream_input.registry_stack.registry
     enable_cloudfront   = true
     lambda_runtime      = "nodejs22.x"
     lambda_source_dir   = "lambda-packages"

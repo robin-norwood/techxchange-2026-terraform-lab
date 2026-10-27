@@ -12,6 +12,6 @@ deployment "registry" {
 }
 
 publish_output "registry" {
-  description = "Complete registry configuration for consumption by environment stacks"
+  description = "Registry configuration for consumption by environment stacks"
   value       = deployment.registry.registry
 }
